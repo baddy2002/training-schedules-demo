@@ -15,6 +15,10 @@ const TMP_FOLDER = '/tmp'; // Cartella in cui salvare il file
 app.use(express.static(path.resolve())); // Usa `path.resolve()` per gestire il path
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+})
+
 app.post('/api/generate', async (req, res) => {
     const formData = req.body;
 
