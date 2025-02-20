@@ -11,7 +11,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;  // Porta Vercel
 const TMP_FOLDER = '/tmp'; // Cartella in cui salvare il file
 
 app.use(express.static(path.join(__dirname)));
@@ -74,6 +74,10 @@ Si prega di rispondere con il piano di allenamento completo, compreso il riscald
         console.error('Errore nella chiamata API:', error);
         res.status(500).json({ error: 'Errore nella generazione del piano' });
     }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server in ascolto sulla porta ${PORT}`);
 });
 
 
