@@ -74,9 +74,10 @@ Si prega di rispondere con il piano di allenamento completo, compreso il riscald
     }
 });
 
+/*
 app.listen(PORT, () => {
     console.log(`Server in ascolto sulla porta ${PORT}`);
 });
-
+*/
 
 export default app;
