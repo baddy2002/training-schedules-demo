@@ -76,8 +76,5 @@ Si prega di rispondere con il piano di allenamento completo, compreso il riscald
     }
 });
 
-app.post("/api/generate", (req, res) => {
-    res.status(200).json({ message: "API funzionante su Vercel!" });
-});
 
 export default app;
