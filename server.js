@@ -1,20 +1,18 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+import axios from "axios";
 
 dotenv.config();
 
-const express = require('express');
-const path = require('path');
-const axios = require('axios');
-const fs = require('fs');
-require('dotenv').config();
 
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 8080;  // Porta Vercel
 const TMP_FOLDER = '/tmp'; // Cartella in cui salvare il file
 
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.resolve())); // Usa `path.resolve()` per gestire il path
 app.use(express.json());
 
 app.post('/api/generate', async (req, res) => {

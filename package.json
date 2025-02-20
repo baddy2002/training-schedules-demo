@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Prototipo per la generazione di schede di allenamento con AI",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js"
   },
