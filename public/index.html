@@ -4,7 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Generatore Scheda Allenamento</title>
-    <link rel="stylesheet" href="/public/style.css">
+    <!--<link rel="stylesheet" href="/public/style.css">-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+
+    </style>
 </head>
 <body>
 <div class="container">
@@ -42,6 +95,39 @@
     </form>
     <div id="result"></div>
 </div>
-<script src="/public/script.js"></script>
+<script>
+    document.getElementById('trainingForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const formData = {
+            altezza: document.getElementById('altezza').value,
+            peso: document.getElementById('peso').value,
+            sesso: document.getElementById('sesso').value,
+            obiettivo: document.getElementById('obiettivo').value,
+            giorni: document.getElementById('giorni').value,
+            durata: document.getElementById('durata').value,
+            esperienza: document.getElementById('esperienza').value,
+            problemi: document.getElementById('problemi').value
+        };
+
+        try {
+            const response = await fetch('/api/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+            console.log('Risultato:', data);
+            document.getElementById('result').innerText = data.trainingPlan || 'Nessun piano generato.';
+        } catch (error) {
+            console.error('Errore:', error);
+            document.getElementById('result').innerText = 'Errore nella generazione del piano.';
+        }
+    });
+
+</script>
 </body>
 </html>
