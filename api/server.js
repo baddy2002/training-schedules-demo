@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 8080;  // Porta Vercel
 const TMP_FOLDER = '/tmp'; // Cartella in cui salvare il file
 
 app.use(express.static(path.resolve())); // Usa `path.resolve()` per gestire il path
+app.use(express.static(path.join(__dirname, '../public')));   //serve file statici
 app.use(express.json());
 
 app.get('/', (req, res) => {
