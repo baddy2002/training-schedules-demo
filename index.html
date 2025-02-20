@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generatore Scheda Allenamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Generatore Scheda Allenamento Personalizzata</h1>
+    <form id="trainingForm">
+        <label for="altezza">Altezza (cm):</label>
+        <input type="number" id="altezza" name="Height" required>
+
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="Weight" required>
+
+        <label for="sesso">Sesso:</label>
+        <select id="sesso" name="Gender" required>
+            <option value="Maschio">Maschio</option>
+            <option value="Femmina">Femmina</option>
+            <option value="Altro">Altro</option>
+        </select>
+
+        <label for="obiettivo">Obiettivo Allenamento:</label>
+        <input type="text" id="obiettivo" name="Goal" required>
+
+        <label for="giorni">Giorni Settimanali di Allenamento:</label>
+        <input type="number" id="giorni" name="DaysPerWeek" required>
+
+        <label for="durata">Durata degli allenamenti:</label>
+        <input type="time" id="durata" name="TrainingDuration" required>
+
+        <label for="esperienza">Esperienza (principiante, intermedio, avanzato):</label>
+        <input type="text" id="esperienza" name="Experience" required>
+
+        <label for="problemi">Problemi fisici presenti:</label>
+        <textarea id="problemi" name="PhisicalProblems"></textarea>
+
+        <button type="submit">Genera Scheda</button>
+    </form>
+    <div id="result"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
