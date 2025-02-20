@@ -3,10 +3,12 @@ import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
 import axios from "axios";
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 8080;  // Porta Vercel
