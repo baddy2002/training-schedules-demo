@@ -1,3 +1,8 @@
+import express from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
@@ -5,6 +10,7 @@ const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
+app.use(express.json());
 const PORT = process.env.PORT || 3000;
 const TMP_FOLDER = '/tmp'; // Cartella in cui salvare il file
 
@@ -70,6 +76,8 @@ Si prega di rispondere con il piano di allenamento completo, compreso il riscald
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server in ascolto sulla porta ${PORT}`);
+app.post("/api/generate", (req, res) => {
+    res.status(200).json({ message: "API funzionante su Vercel!" });
 });
+
+export default app;
