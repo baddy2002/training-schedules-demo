@@ -9,8 +9,5 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/server.js" },
     { "src": "/(.*)", "dest": "/public/index.html" }
-  ],
-  "static": {
-    "public": "public"
-  }
+  ]
 }
